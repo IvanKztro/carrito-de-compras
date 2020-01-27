@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no">
 	<link rel="stylesheet" href="../Libraries/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../Libraries/css/styles-home.css">
 	<link rel="stylesheet" href="../Libraries/css/font-awesome.min.css">
@@ -27,7 +28,7 @@
 			  <p id="detalles_p"></p>
 			</div>
 			<div class="modal-footer">
-			  <button type="button" class="btn btn-success">COMPRAR</button>
+			  <!--<button type="button" class="btn btn-success">COMPRAR</button>-->
 			  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 			</div>
 		  </div>
@@ -65,7 +66,7 @@
 			  </div>
 			</div>
 			<div class="modal-footer">
-			  <button type="button" class="btn btn-success">COMPRAR</button>
+			  <!--<button type="button" class="btn btn-success">COMPRAR</button>-->
 			  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 			</div>
 		  </div>
@@ -108,15 +109,15 @@
 		  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
 		  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 		</ol>
-		<div class="carousel-inner">
+		<div class="carousel-inner" >
 		  <div class="carousel-item active">
-			<img src="../img/principal_lentes.jpg" class="mx-auto d-block w-10" alt="...">
+			<img src="../img/principal_lentes.jpg" class="d-block w-100 " alt="..." >
 		  </div>
 		  <div class="carousel-item">
-			<img src="../img/principal_lentes_2.jpg" class="mx-auto d-block" alt="...">
+			<img src="../img/principal_lentes_2.jpg" class="d-block w-100" alt="...">
 		  </div>
 		  <div class="carousel-item">
-			<img src="../img/principal_lentes_3.jpg" class="mx-auto d-block" alt="...">
+			<img src="../img/principal_lentes_3.jpg" class="d-block w-100" alt="...">
 		  </div>
 		</div>
 		<a class="carousel-control-prev " href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -132,12 +133,12 @@
 
 
 
-	  <div class="container">
+	  <div class="container" >
 		<pre class="subitulosh4 mt-5">Promociones</pre>
 		<hr>
 		
 
-		<div id="content_G" class=" row col-12 col-sm-12">
+		<div id="content_G" class="row" >
 		</div>
 	  </div>
 	
@@ -164,13 +165,13 @@
 				const data = JSON.stringify(response);
 				response.forEach(lente => {
 					$("#content_G").append(`
-					<div class="card col-4 col-sm-12" class="" style="width: ;">
-						<img class="card-img-top " src="${lente.src}" alt="">
-						<div class="card-body">
+					<div class="card col-lg-3 col-sm-4 my-2 py-1 "  style=" border: 1px solid #BDBDBD !important;">
+						<img class="card-img-top mx-auto" src="${lente.src}" alt=""  style=" border: 1px solid #BDBDBD !important;>
+						<div class="card-body" >
 							<h3 class="card-title">${lente.nombre}</h3>
 							<p>$${lente.precio}</p>
-							<a  id-detalle = "${lente.id}" class="detalles btn btn-info" data-target="#modal_lentes" data-toggle="modal">Detalles</a>
-							<a  id-add = "${lente.id}" class="agregar btn btn-success" type="button">Agregar</a>
+							<a  id-detalle = "${lente.id}" class="detalles btn btn-primary" data-target="#modal_lentes" data-toggle="modal">Detalles</a>
+							<a  id-add = "${lente.id}" class="agregar btn btn-success" >Agregar</a>
 						</div>
 					</div>	
 					`);
