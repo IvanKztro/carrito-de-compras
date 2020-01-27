@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="../Libraries/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../Libraries/css/styles-home.css">
+	<link rel="stylesheet" href="../Libraries/css/font-awesome.min.css">
+	
+	<title>Tienda Virtual</title>
+</head>
+<body>
+
+	<!--MODALS PARA INFORMACIÓN EXTRA-->
+
+	<!--MODAL DETALLES DE LENTES-->
+
+	<div id="modal_lentes" class="modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title">DETALLES</h5>
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+			<div class="modal-body">
+			  <p id="detalles_p"></p>
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-success">COMPRAR</button>
+			  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+			</div>
+		  </div>
+		</div>
+	</div>
+
+	<!--MODAL CARRITO DE LENTES-->
+
+	
+
+	<div id="modal_carrito" class="modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog modal-lg" role="document">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title">CARRITO</h5>
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+			<div class="modal-body">
+				<div class=" align-items-center text-center row col-12">
+					<div class="col-4 col-md-4 col-lg-3" style="background-color:;">
+						<span>CARRITO</span>
+					</div>
+					<div class="col-4 col-md-4 col-lg-3" style="background-color:;">
+						<span>CANTIDAD</span>
+					</div>
+					<div class="col-4 col-md-4 col-lg-6">
+						<span>TOTAL</span>
+					</div>
+					  
+				</div>
+				<hr>
+			  <div class="carritoC" >
+			  </div>
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-success">COMPRAR</button>
+			  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+			</div>
+		  </div>
+		</div>
+	</div>
+
+	<header>
+		
+		<nav id="navbar" class="navbar navbar-expand-lg navbar-light justify-content-center fixed-top" style="background-color: darkgray;">
+			<h4 class="text-center">GlassShop</h4>
+			<button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarBody">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div id="navbarBody" class="collapse navbar-collapse">
+				<nav class="nav container justify-content-between flex-column flex-lg-row text-center">
+					<a href="#" class="nav-link">Home</a>
+					<a href="#" class="nav-link">Contacto</a>
+					<a href="#" class="nav-link">Acerca de</a>
+					<a href="#" class="nav-link">Shop</a>
+					<a href="#" class="nav-link">User</a>
+					<a id="a_carrito" href="#" class="nav-link" data-toggle="modal" data-target="#modal_carrito">
+						Carrito
+						<!--class="nav-link fa fa-shopping-cart"-->
+						<!--<span class="glyphicon glyphicon-shopping-cart"></span>-->
+						<span id="badgeCarrito" class="badge badge-primary">12</span>
+					</a>
+				</nav>
+			</div>
+
+		</nav>
+
+	</header>
+
+
+
+	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+		<ol class="carousel-indicators">
+		  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+		  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+		  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+		</ol>
+		<div class="carousel-inner">
+		  <div class="carousel-item active">
+			<img src="../img/principal_lentes.jpg" class="mx-auto d-block w-10" alt="...">
+		  </div>
+		  <div class="carousel-item">
+			<img src="../img/principal_lentes_2.jpg" class="mx-auto d-block" alt="...">
+		  </div>
+		  <div class="carousel-item">
+			<img src="../img/principal_lentes_3.jpg" class="mx-auto d-block" alt="...">
+		  </div>
+		</div>
+		<a class="carousel-control-prev " href="#carouselExampleIndicators" role="button" data-slide="prev">
+		  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		  <span class="sr-only">Previous</span>
+		</a>
+		<a class="carousel-control-next " href="#carouselExampleIndicators" role="button" data-slide="next">
+		  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+		  <span class="sr-only">Next</span>
+		</a>
+	  </div>
+
+
+
+
+	  <div class="container">
+		<pre class="subitulosh4 mt-5">Promociones</pre>
+		<hr>
+		
+
+		<div id="content_G" class=" row col-12">
+		</div>
+	  </div>
+	
+</body>
+<script src="../Libraries/js/jquery-3.3.1.min.js"></script>
+<script src="../Libraries/js/popper.min.js"></script>
+<script src="../Libraries/js/bootstrap.min.js"></script>
+<script  src="../View/script/carrito.js"></script>
+<script  src="../View/script/cargarFuncionesCarrito.js"></script>
+
+<script >
+	
+//$(document).on("ready", function(){
+	$(function(){
+	catalogo();
+	//getLengthCarrito();
+	});
+
+	var catalogo = function(){
+		$.ajax({
+			url: '../Libraries/lentes.json',
+			type: "GET",
+			success: function(response){
+				const data = JSON.stringify(response);
+				response.forEach(lente => {
+					$("#content_G").append(`
+					<div class="card col-4" class="" style="width: ;">
+						<img class="card-img-top " src="${lente.src}" alt="">
+						<div class="card-body">
+							<h3 class="card-title">${lente.nombre}</h3>
+							<p>$${lente.precio}</p>
+							<a  id-detalle = "${lente.id}" class="detalles btn btn-info" data-target="#modal_lentes" data-toggle="modal">Detalles</a>
+							<a  id-add = "${lente.id}" class="agregar btn btn-success" type="button">Agregar</a>
+						</div>
+					</div>	
+					`);
+				})
+				//let carritoEventos = new carrito();
+				agregarCarrito(response);
+				detalles(response);
+			}
+		});
+	}
+
+	var agregarCarrito=  (response)=>{
+
+		$(".agregar").click(function(){
+			let idLente = $(this).attr("id-add");
+			console.log("Lente: "+idLente);
+			//console.log( response);
+			let producto = response.find( lente => lente.id == idLente );
+		// console.log(producto);
+			response.forEach( producto => {
+				console.log("PRODUCTO");
+				console.log(producto);
+				if(producto.id == idLente)
+				{
+				// console.log(producto.cantidad);
+					$(".carritoC").append(`
+						
+						<div idLenteCarrito="" class=" divContenedor  align-items-center text-center row">
+							<div class="col-2 col-md-3 col-lg-2 ml-4" style="background-color:;">
+								<img src="${producto.src}" alt="" style="height: 4rem;">
+								<div class="row">
+									<span>${producto.nombre}</span>
+								</div>
+							</div>
+							<div style="background-color:;" class="col-6 col-md-4 col-lg-5 divButtons">
+								<button class="btn btn-primary btn-sm dis" idGlass="${producto.id}">-</button>
+								<input id="${producto.id}" type="text" class="input_Cantidad form-control-sm" style=";" value="1">
+								<button class="btn btn-primary btn-sm aum" idGlass="${producto.id}">+</button>
+								<div>
+								<span id="spanCU${producto.id}" class="cantidadUnitaria">1 </span> x <span>$${producto.precio}</span>
+								</div>
+							</div>
+							<div  class="col-3 col-md-4 col-lg-4 totalUnitaria" style="background-color:;">
+								<span id="spanTotal${producto.id}" >$${producto.precio}</span>
+								<button id-delete=${producto.id} class="delete btn btn-danger btn-sm">X</button>
+							</div>  
+						</div>
+						<hr>
+						
+					`)
+					let string = localStorage.getItem("carritoLentes");
+					let carritoLentes = JSON.parse(string);
+
+					console.log(carritoLentes);
+					if(carritoLentes != null)
+					{
+						carritoLentes.push(
+							{
+								id: producto.id, 
+								nombre: producto.nombre, 
+								precio: producto.precio, 
+								src: producto.src, 
+								cantidad: 1,
+							}
+						)
+					}else{
+						carritoLentes = 
+						[{
+							id: producto.id, 
+							nombre: producto.nombre, 
+							precio: producto.precio, 
+							src: producto.src, 
+							cantidad: 1,
+						}];
+					}
+					console.log(carritoLentes);
+					localStorage.setItem("carritoLentes", JSON.stringify(carritoLentes));
+					//getLengthCarrito();
+				}
+			})
+		// this.showCarrito();
+		cargarEventos();
+			
+
+		});
+	}
+	
+
+
+		
+
+	var detalles = (response) => {
+		$(".detalles").click(function(){
+			var id = $(this).attr("id-detalle");
+			let lenteDetalles = response.find(lente => lente.id == id);
+			$("#detalles_p").text(lenteDetalles.detalles);
+
+		});
+	}
+
+
+		
+
+		
+
+		
+
+		
+		
+		
+</script>
+
+
+</html>

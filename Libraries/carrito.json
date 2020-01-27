@@ -1,0 +1,4 @@
+[
+    {"id": 0, "nombre": "Carbon black, yellow", "precio": 400, "src": "../img/gafas_1.jpg", "cantidad": 1},
+    {"id": 1, "nombre": "Carbon black, blue", "precio": 450, "src": "../img/gafas_2.jpg", "cantidad": 2}
+]
